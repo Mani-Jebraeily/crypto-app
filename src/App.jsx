@@ -1,11 +1,15 @@
-import { useState } from 'react'
+import HomePage from "./components/templates/HomePage"
+
+
+
 
 
 function App() {
-
   return (
     <>
-    crypto app
+    
+    <HomePage/>
+    
 
     </>
   )
