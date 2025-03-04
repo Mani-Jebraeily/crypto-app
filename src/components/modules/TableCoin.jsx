@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import ChartDown from '../../assets/chart-down.svg'
 import ChartUp from '../../assets/chart-up.svg'
 
 import { BarLoader } from "react-spinners";
 
-function TableCoin({coins,isLoading}) {
+function TableCoin({coins,isLoading,currency}) {
+    const [symbol,setSymbol]=useState("$")
+
+    useEffect(()=>{
+        if(currency==="usd"){
+            setSymbol("$")
+        }else if(currency==="eur"){
+            setSymbol("€")
+        }else{setSymbol("¥")}    
+    },[currency])
+
   return (
     <>
     <div className=' min-h[1000px] ma x-w[1000px] flex justify-center m-[50px_0px_100px]  '>
@@ -26,7 +36,7 @@ function TableCoin({coins,isLoading}) {
 
              <tbody>
                 {coins.map(coin=>(
-                    <TabaleRow coin={coin} key={coin.id} />
+                    <TabaleRow coin={coin} symbol={symbol} key={coin.id} />
                 ))}
              </tbody>
        </table>
@@ -42,7 +52,7 @@ export default TableCoin
 
 
 
-const TabaleRow=({coin})=>{
+const TabaleRow=({coin,symbol})=>{
     return(
         <>
         <tr className='h-20 border-b-1 border-solid border-[#22262e] font-semibold text-[1.1rem] *:sm:p-[0] *:p-[0_10px]'>
@@ -58,7 +68,7 @@ const TabaleRow=({coin})=>{
                         </td>
 
                         <td>
-                            <p>${coin.current_price.toLocaleString()}</p>
+                            <p>{symbol} {coin.current_price.toLocaleString()}</p>
                         </td>
 
                         <td className={coin.price_change_percentage_24h > 0 ? "text-[#57bc7c]" : "text-[#d33636]"}>
@@ -66,7 +76,7 @@ const TabaleRow=({coin})=>{
                         </td>
 
                         <td>
-                            <p>{coin.total_volume.toLocaleString() } </p>
+                            <p>{symbol} {coin.total_volume.toLocaleString() } </p>
                         </td>
 
                         <td>                         
