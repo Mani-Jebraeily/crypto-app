@@ -1,18 +1,9 @@
 import React from 'react'
 
-
-
 import ChartDown from '../../assets/chart-down.svg'
 import ChartUp from '../../assets/chart-up.svg'
 
 import { BarLoader } from "react-spinners";
-
-<style>
-    <body>
-        border-bottom:2px solid #fff
-    </body>
-</style>
-
 
 function TableCoin({coins,isLoading}) {
   return (
