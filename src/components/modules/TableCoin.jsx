@@ -5,7 +5,9 @@ import ChartUp from '../../assets/chart-up.svg'
 
 import { BarLoader } from "react-spinners";
 
-function TableCoin({coins,isLoading,currency}) {
+import { getChart } from '../../services/cryptoApi';
+
+function TableCoin({coins,isLoading,currency,setChart}) {
     const [symbol,setSymbol]=useState("$")
 
     useEffect(()=>{
@@ -36,7 +38,7 @@ function TableCoin({coins,isLoading,currency}) {
 
              <tbody>
                 {coins.map(coin=>(
-                    <TabaleRow coin={coin} symbol={symbol} key={coin.id} />
+                    <TabaleRow coin={coin} symbol={symbol} key={coin.id} setChart={setChart} />
                 ))}
              </tbody>
        </table>
@@ -52,12 +54,24 @@ export default TableCoin
 
 
 
-const TabaleRow=({coin,symbol})=>{
+const TabaleRow=({coin,symbol,setChart})=>{
+
+    const showModal=async ()=>{
+        try {
+                const res= await fetch(getChart(coin.id))
+                const json=await res.json()
+                // setChart(json)
+                setChart({...json,coin})
+        } catch (error) {
+            setChart(null)
+            console.log(error);          
+        }
+    }
     return(
         <>
         <tr className='h-20 border-b-1 border-solid border-[#22262e] font-semibold text-[1.1rem] *:sm:p-[0] *:p-[0_10px]'>
                         <td>
-                            <div className='flex items-center cursor-pointer'>
+                            <div onClick={showModal} className='flex items-center cursor-pointer'>
                                <img src={coin.image} alt="coin image" className='size-6.5 mr-2.5'/>
                                <p className='text-[#9fa6b7] text-[1.2rem] font-semibold'>{coin.symbol.toUpperCase()}</p>
                             </div>
