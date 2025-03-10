@@ -10,7 +10,6 @@ function Search({setCurrency,setChart}) {
     const [text,setText]=useState("")
     const [coins,setCoins]=useState([])
     const [isLoading,setIsLoading]=useState(false)
-    const [coin,setCoin]=useState([])
     const currencyHandeler=()=>{
         setCurrency(event.target.value)
       }
@@ -54,23 +53,18 @@ function Search({setCurrency,setChart}) {
 
 
       const chartHandeler=(i)=>{
-        setCoin([])
         try {
             const getData= async()=>{
                 const resCoin= await fetch(getSingleCoin(i.id))
                 const jsonCoin= await resCoin.json()
-                setCoin(jsonCoin)
 
-                setCoin([])
                 fetch(getSingleCoin(i.id)).then((res)=>res.json()).then((json)=>setCoin(json))
                 const res=await fetch(getChart(i.id))
                 const json=await res.json()
-                if(coin[0]){
-                setChart({...json,coin:coin[0]})
-                }
+
+                setChart({...json,coin:jsonCoin[0]})
             }
             getData()
-            setCoin([])
             
         } catch (error) {
             setChart(null)
@@ -80,12 +74,11 @@ function Search({setCurrency,setChart}) {
 
       }
 
-    //   console.log(coinPage)
 
 
       
   return (
-    <div className='mt-12.5 relative'>
+    <div className=' flex flex-row mt-12.5 relative'>
         <input type="text" placeholder='Search' onChange={()=>setText(event.target.value)}  className='w-[300px] h-[50px] p-2.5 text-[1.1rem] text-[#fff] bg-[#23242e] border-none rounded-sm  focus:outline-none'/>
 
        <select onChange={()=>currencyHandeler()} name="currency" id="currency" className='bg-[#23242e] h-12.5 border-none rounded-sm ml-5 text-[#fff] p-[0_10px] focus:outline-none'>

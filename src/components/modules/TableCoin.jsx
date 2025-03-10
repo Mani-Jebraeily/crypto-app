@@ -82,7 +82,7 @@ const TabaleRow=({coin,symbol,setChart})=>{
                         </td>
 
                         <td>
-                            <p>{symbol} {coin.current_price.toLocaleString()}</p>
+                            <p>{symbol}{coin.current_price.toLocaleString()}</p>
                         </td>
 
                         <td className={coin.price_change_percentage_24h > 0 ? "text-[#57bc7c]" : "text-[#d33636]"}>
@@ -90,7 +90,7 @@ const TabaleRow=({coin,symbol,setChart})=>{
                         </td>
 
                         <td>
-                            <p>{symbol} {coin.total_volume.toLocaleString() } </p>
+                            <p>{symbol}{coin.total_volume.toLocaleString() } </p>
                         </td>
 
                         <td>                         
