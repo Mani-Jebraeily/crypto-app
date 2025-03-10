@@ -1,15 +1,16 @@
 import React, { useEffect,useState } from 'react'
-import { searchCoin } from '../../services/cryptoApi'
+import { searchCoin,getChart,getSingleCoin } from '../../services/cryptoApi'
 
 import { MoonLoader,SyncLoader} from "react-spinners";
 
 
 
 
-function Search({setCurrency}) {
+function Search({setCurrency,setChart}) {
     const [text,setText]=useState("")
     const [coins,setCoins]=useState([])
     const [isLoading,setIsLoading]=useState(false)
+    const [coin,setCoin]=useState([])
     const currencyHandeler=()=>{
         setCurrency(event.target.value)
       }
@@ -51,6 +52,37 @@ function Search({setCurrency}) {
         return ()=> controller.abort()
       },[text])
 
+
+      const chartHandeler=(i)=>{
+        setCoin([])
+        try {
+            const getData= async()=>{
+                const resCoin= await fetch(getSingleCoin(i.id))
+                const jsonCoin= await resCoin.json()
+                setCoin(jsonCoin)
+
+                setCoin([])
+                fetch(getSingleCoin(i.id)).then((res)=>res.json()).then((json)=>setCoin(json))
+                const res=await fetch(getChart(i.id))
+                const json=await res.json()
+                if(coin[0]){
+                setChart({...json,coin:coin[0]})
+                }
+            }
+            getData()
+            setCoin([])
+            
+        } catch (error) {
+            setChart(null)
+            console.log(error.message)
+            
+        }
+
+      }
+
+    //   console.log(coinPage)
+
+
       
   return (
     <div className='mt-12.5 relative'>
@@ -72,10 +104,10 @@ function Search({setCurrency}) {
         </div>}
 
         <ul>
-            {coins.map(coin=>(
-                <li key={coin.id} className='flex items-center  mb-3.5 pb-1.5 border-b-2 border-b-[#22262e] '>
-                    <img src={coin.thumb} alt={coin.name} className='mr-2.5 size-6' />
-                    {coin.name}
+            {coins.map(i=>(
+                <li key={i.id} onClick={()=>chartHandeler(i)} className='flex items-center  mb-3.5 pb-1.5 border-b-2 border-b-[#22262e] cursor-pointer '>
+                    <img src={i.thumb} alt={i.name} className='mr-2.5 size-6' />
+                    {i.name}
                 </li>
             ))}
         </ul>

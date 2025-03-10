@@ -60,8 +60,8 @@ const TabaleRow=({coin,symbol,setChart})=>{
         try {
                 const res= await fetch(getChart(coin.id))
                 const json=await res.json()
-                // setChart(json)
                 setChart({...json,coin})
+
         } catch (error) {
             setChart(null)
             console.log(error);          

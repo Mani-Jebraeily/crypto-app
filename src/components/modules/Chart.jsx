@@ -15,18 +15,17 @@ function Chart({chart,setChart}) {
             <img src={chart.coin.image} alt={chart.coin.name} className='w-10 h-10 mr-5 ' />
             <p className='text-[1.5rem] font-bold'>{chart.coin.name}</p>
         </div>
-        {/* name  */}
         <div className='w-[760px] h-[300px]'>
-            {/* grap */}
             <ChartComponent data={convertData(chart,type)} type={type}/>
         </div>
 
         <div className='mt-8  '>
             <button onClick={()=>setType("prices")} className={type==="prices"?`m-[10px_20px]  bg-[#3874ff] border-1 border-[#3874ff] text-[#fff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`:`m-[10px_20px]  bg-[#18181cdb] border-1 border-[#3874ff] text-[#3874ff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`}>Prices</button>
-            {/* <button className='bg-[#3874ff]'> selected</button> */}
             <button onClick={()=>setType("market_caps")} className={type==="market_caps"?`m-[10px_20px]  bg-[#3874ff] border-1 border-[#3874ff] text-[#fff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`:`m-[10px_20px]  bg-[#18181cdb] border-1 border-[#3874ff] text-[#3874ff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`}>Market Caps</button>
             <button onClick={()=>setType("total_volumes")} className={type==="total_volumes"?`m-[10px_20px]  bg-[#3874ff] border-1 border-[#3874ff] text-[#fff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`:`m-[10px_20px]  bg-[#18181cdb] border-1 border-[#3874ff] text-[#3874ff] text-[1rem] p-[5px_10px] rounded-sm cursor-pointer`}>Total Volumes</button>
         </div>
+
+
 
         <div className='flex justify-between m-[30px_20px_0px] *:flex *:text-[1.1rem]'>
             <div>
