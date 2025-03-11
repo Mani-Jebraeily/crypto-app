@@ -1,12 +1,42 @@
-# React + Vite
+># **Project Title**
+ ##### Cryptocurrency Market Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+># **Description**
 
-Currently, two official plugins are available:
+This project is a web application built with React.js ,providing a real-time overview of the cryptocurrency market 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Features:
+- Display cryptocurrencies ranked by market capitalization
+- Real-time cryptocurrency price
+- Search functionality to find specific cryptocurrencies
+- Interactive charts for each cryptocurrency, displaying price history
+ 
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Technologies Used:
+- React.Js
+- Tailwind Css
+- api from https://www.coingecko.com
+
+### Libraries Used:
+- React Suite  https://rsuitejs.com
+- recharts     https://recharts.org
+
+
+># **Getting started**
+
+To get the frontend running locally:
+
+- Clone this repo
+- `npm install` to install all req'd dependencies
+- `npm run dev` to start the local server (this project Vite)
+
+># **Demo**
+
+[**Click here to see demo**](https://mani-jebraeily.github.io/crypto-app/)
+<br/>
+<br/>
+
+**`Desktop design`**
+
+![demo](./src/assets/demo.png)
