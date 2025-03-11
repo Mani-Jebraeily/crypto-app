@@ -7,7 +7,7 @@ import { BarLoader } from "react-spinners";
 
 import { getChart } from '../../services/cryptoApi';
 
-function TableCoin({coins,isLoading,setChart,symbol}) {
+function TableCoin({coins,isLoading,setChart,symbol,currency}) {
 
   return (
     <>
@@ -29,7 +29,7 @@ function TableCoin({coins,isLoading,setChart,symbol}) {
 
              <tbody>
                 {coins.map(coin=>(
-                    <TabaleRow coin={coin} symbol={symbol} key={coin.id} setChart={setChart} />
+                    <TabaleRow coin={coin} symbol={symbol} key={coin.id} setChart={setChart} currency={currency} />
                 ))}
              </tbody>
        </table>
@@ -45,11 +45,11 @@ export default TableCoin
 
 
 
-const TabaleRow=({coin,symbol,setChart})=>{
+const TabaleRow=({coin,symbol,setChart,currency})=>{
 
     const showModal=async ()=>{
         try {
-                const res= await fetch(getChart(coin.id))
+                const res= await fetch(getChart(coin.id,currency))
                 const json=await res.json()
                 setChart({...json,coin})
 

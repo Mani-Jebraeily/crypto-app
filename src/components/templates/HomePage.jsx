@@ -47,7 +47,7 @@ function HomePage() {
   return (
     <>
         <Search setCurrency={setCurrency} setChart={setChart} currency={currency}  />
-        <TableCoin coins={coins} currency={currency} isLoading={isLoading}  setChart={setChart} symbol={symbol}/>
+        <TableCoin coins={coins} currency={currency} isLoading={isLoading}  setChart={setChart} symbol={symbol} />
         <Pagination page={page} setPage={setPage}/>
         {!!chart && <Chart chart={chart} setChart={setChart} currency={currency} symbol={symbol}/>}
     </>

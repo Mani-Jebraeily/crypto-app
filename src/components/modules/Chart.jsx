@@ -1,5 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
-import { getChart } from '../../services/cryptoApi'
+import React, { useState } from 'react'
 import { convertData } from '../../helpers/convertData'
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 

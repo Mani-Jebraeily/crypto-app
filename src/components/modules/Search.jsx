@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react'
 import { searchCoin,getChart,getSingleCoin } from '../../services/cryptoApi'
 
-import { MoonLoader,SyncLoader} from "react-spinners";
+import { SyncLoader} from "react-spinners";
 
 
 
@@ -59,7 +59,6 @@ function Search({setCurrency,setChart,currency}) {
                 const resCoin= await fetch(getSingleCoin(i.id,currency))
                 const jsonCoin= await resCoin.json()
 
-                // fetch(getSingleCoin(i.id)).then((res)=>res.json()).then((json)=>setCoin(json))
                 const res=await fetch(getChart(i.id,currency))
                 const json=await res.json()
 
