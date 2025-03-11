@@ -7,16 +7,7 @@ import { BarLoader } from "react-spinners";
 
 import { getChart } from '../../services/cryptoApi';
 
-function TableCoin({coins,isLoading,currency,setChart}) {
-    const [symbol,setSymbol]=useState("$")
-
-    useEffect(()=>{
-        if(currency==="usd"){
-            setSymbol("$")
-        }else if(currency==="eur"){
-            setSymbol("€")
-        }else{setSymbol("¥")}    
-    },[currency])
+function TableCoin({coins,isLoading,setChart,symbol}) {
 
   return (
     <>

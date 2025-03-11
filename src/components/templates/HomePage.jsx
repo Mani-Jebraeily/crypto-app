@@ -14,7 +14,16 @@ function HomePage() {
     const [page,setPage]=useState(1)
     const [currency,setCurrency]=useState("usd")
     const [chart,setChart]=useState(false)
-
+    const [symbol,setSymbol]=useState("$")
+       
+    useEffect(()=>{
+        if(currency==="usd"){
+            setSymbol("$")
+        }else if(currency==="eur"){
+            setSymbol("€")
+        }else{setSymbol("¥")}    
+    },[currency])
+    
 
     useEffect(()=>{
         setIsLoading(true)
@@ -37,10 +46,10 @@ function HomePage() {
 
   return (
     <>
-        <Search setCurrency={setCurrency} setChart={setChart}/>
-        <TableCoin coins={coins} currency={currency} isLoading={isLoading}  setChart={setChart}/>
+        <Search setCurrency={setCurrency} setChart={setChart} currency={currency}  />
+        <TableCoin coins={coins} currency={currency} isLoading={isLoading}  setChart={setChart} symbol={symbol}/>
         <Pagination page={page} setPage={setPage}/>
-        {!!chart && <Chart chart={chart} setChart={setChart}/>}
+        {!!chart && <Chart chart={chart} setChart={setChart} currency={currency} symbol={symbol}/>}
     </>
   )
 }

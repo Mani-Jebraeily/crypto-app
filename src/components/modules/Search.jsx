@@ -6,10 +6,11 @@ import { MoonLoader,SyncLoader} from "react-spinners";
 
 
 
-function Search({setCurrency,setChart}) {
+function Search({setCurrency,setChart,currency}) {
     const [text,setText]=useState("")
     const [coins,setCoins]=useState([])
     const [isLoading,setIsLoading]=useState(false)
+
     const currencyHandeler=()=>{
         setCurrency(event.target.value)
       }
@@ -55,11 +56,11 @@ function Search({setCurrency,setChart}) {
       const chartHandeler=(i)=>{
         try {
             const getData= async()=>{
-                const resCoin= await fetch(getSingleCoin(i.id))
+                const resCoin= await fetch(getSingleCoin(i.id,currency))
                 const jsonCoin= await resCoin.json()
 
-                fetch(getSingleCoin(i.id)).then((res)=>res.json()).then((json)=>setCoin(json))
-                const res=await fetch(getChart(i.id))
+                // fetch(getSingleCoin(i.id)).then((res)=>res.json()).then((json)=>setCoin(json))
+                const res=await fetch(getChart(i.id,currency))
                 const json=await res.json()
 
                 setChart({...json,coin:jsonCoin[0]})
