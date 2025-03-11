@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/Mani-Jebraeily/crypto-app.git",
   "name": "crypto-app",
   "private": true,
   "version": "0.0.0",
@@ -7,10 +8,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy":"gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.9",
+    "gh-pages": "^6.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-spinners": "^0.15.0",
